@@ -1,0 +1,24 @@
+main = "./dist/worker.mjs"
+compatibility_date = "2023-04-01"
+workers_dev = false # Enable it for development purposes, and if you are want a domain ending with .workers.dev
+account_id = "your-account-id-here" # Log in dash.cloudflare.com, select an account, go to Workers, and copy Account ID
+
+[build]
+command = 'npm install && npm run build'
+
+[env.production]
+name = "pp-attester-turnstile"
+route = { pattern = "pp-attseter-turnstile.example.test", custom_domain=true }
+# If you deploy an issuer yourself that uses Cloudflare Workers, you need to use Service Bindings for the attester to reach to this issuer
+# This is the case for instance if you deploy cloudfare/pp-issuer with cloudflare/pp-attester
+# services = [
+#   { binding = "ISSUER", service = "pp-issuer-production", environment = "production" }
+# ]
+
+[env.production.vars]
+ENVIRONMENT = "production"
+ISSUER_DIRECTORY_URL = "https://pp-issuer-public.research.cloudflare.com/.well-known/private-token-issuer-directory" # Use Cloudflare Research Public Issuer. This is only meant for experiments, AND SHOULD NOT BE USED ON A PRODUCTION SERVICE
+ISSUER_REQUEST_URL = "https://pp-issuer-public.research.cloudflare.com/token-request"
+SENTRY_SAMPLE_RATE = "0" # Between 0-1 if you log errors on Sentry. 0 disables Sentry logging. Configuration is done through Workers Secrets
+TURNSTILE_PUBLIC_KEY = "your-turnstile-public-key-here" # Follow "Get Started" https://developers.cloudflare.com/turnstile/get-started/
+TURNSTILE_VERIFICATION_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
