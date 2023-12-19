@@ -45,16 +45,20 @@ export async function buildCmd (opts) {
 
   // Sentry release and sourcemap upload
   if (process.env.SENTRY_API_TOKEN) {
+    let headers = {}
+    if (process.env.SENTRY_ACCESS_CLIENT_ID) {
+      headers['Cf-Access-Client-ID'] = process.env.SENTRY_ACCESS_CLIENT_ID
+    }
+    if (process.env.SENTRY_ACCESS_CLIENT_SECRET) {
+      headers['Cf-Access-Client-Secret'] = process.env.SENTRY_ACCESS_CLIENT_SECRET
+    }
     const cli = new Sentry(undefined, {
       authToken: process.env.SENTRY_API_TOKEN,
-      org: 'cloudflare',
-      project: 'privacy-pass-attester',
+      org: process.env.SENTRY_ORG ?? 'cloudflare',
+      project: process.env.SENTRY_PROJECT ?? 'privacy-pass-attester',
       dist: git.short(__dirname),
-      url: 'https://sentry.io/',
-      headers: {
-        'CF-Access-Client-ID': process.env.SENTRY_ACCESS_CLIENT_ID,
-        'CF-Access-Client-Secret': process.env.SENTRY_ACCESS_CLIENT_SECRET,
-      },
+      url: process.env.SENTRY_URL ?? 'https://sentry.io/',
+      headers,
     })
 
     // these are the API calls if the JS API was to support custom headers
