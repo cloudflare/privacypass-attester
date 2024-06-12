@@ -26,7 +26,7 @@ export default {
 				wranglerConfigEnv: 'dev',
 				mounts: {
 					// Fake service bindings
-					'pp-issuer-dev': {
+					'privacypass-issuer-dev': {
 						script: `export default {
 						  async fetch(request) {
 							return new Response("fake issuer");

@@ -1,6 +1,6 @@
-# pp-attester: Privacy Pass Attester
+# privacypass-attester: Privacy Pass Attester
 
-pp-attester is a service that provides [tokens](https://www.ietf.org/archive/id/draft-ietf-privacypass-protocol-14.html) to client able to solve a challenge. It provides an HTTP API to retrieve and validate a challenge,proxying token requests to a Privacy Pass Issuer.
+privacypass-attester is a service that provides [tokens](https://www.ietf.org/archive/id/draft-ietf-privacypass-protocol-14.html) to client able to solve a challenge. It provides an HTTP API to retrieve and validate a challenge,proxying token requests to a Privacy Pass Issuer.
 
 Privacy Pass protocol is defined as an [IETF Draft](https://www.ietf.org/archive/id/draft-ietf-privacypass-protocol-14.html). The attester API is defined ad-hoc, and documented [below][#api-specification].
 
@@ -54,7 +54,7 @@ For Turnstile, the server validates a Turnstile token sent by the client, which 
 This attester is based on Cloudflare Workers. All configuration is held in [wrangler.toml](./wrangler.toml).
 You should update
 
-* `ISSUER_REQUEST_URL` to the URL of your issuer. You can deploy your own issuer with [cloudflare/pp-issuer](https://github.com/cloudflare/pp-issuer).
+* `ISSUER_REQUEST_URL` to the URL of your issuer. You can deploy your own issuer with [cloudflare/privacypass-issuer](https://github.com/cloudflare/privacypass-issuer).
 
 ## API specification
 
@@ -112,7 +112,7 @@ _If the challenge failed_
 
 ## Security Considerations
 
-This software has not been audited. Please use at your sole discretion. With this in mind, pp-attester security relies on the following:
+This software has not been audited. Please use at your sole discretion. With this in mind, privacypass-attester security relies on the following:
 
 * [Privacy Pass](https://www.ietf.org/archive/id/draft-ietf-privacypass-protocol-14.html) protocol, and its implementation in [cloudflare/privacypass-ts](https://github.com/cloudflare/privacypass-ts),
 * [VOPRF](https://datatracker.ietf.org/doc/draft-irtf-cfrg-voprf/) by A. Davidson , A. Faz-Hernandez , N. Sullivan , C. Wood, its implementation in [cloudflare/voprf-ts](https://github.com/cloudflare/voprf-ts),
