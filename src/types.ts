@@ -17,7 +17,7 @@ export interface TurnstileResponse {
 	'cdata'?: string;
 }
 
-// TODO: potentially grab type definitions from @cloudflare/privacypass-ts across all pp- repos
+// TODO: potentially grab type definitions from @cloudflare/privacypass-ts across all privacypass- repos
 export type IssuerConfigurationResponse = {
 	'issuer-request-uri': string;
 	'token-keys': IssuerTokenKey[];

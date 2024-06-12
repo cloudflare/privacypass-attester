@@ -1,5 +1,5 @@
 {
-	"name": "pp-attester",
+	"name": "privacypass-attester",
 	"version": "0.1.0",
 	"type": "module",
 	"main": "dist/worker.mjs",
@@ -10,8 +10,8 @@
 		"Thibault Meunier <thibault@cloudflare.com>"
 	],
 	"license": "Apache-2.0",
-	"homepage": "https://github.com/cloudflare/pp-attester#readme",
-	"repository": "github:cloudflare/pp-attester",
+	"homepage": "https://github.com/cloudflare/privacypass-attester#readme",
+	"repository": "github:cloudflare/privacypass-attester",
 	"scripts": {
 		"build": "tsc && node scripts/cli.js build",
 		"deploy:production": "wrangler publish --no-bundle --env production",
