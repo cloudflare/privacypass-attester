@@ -4,6 +4,7 @@ import { ConsoleLogger, Logger } from '../src/context/logging';
 import { MetricsRegistry } from '../src/context/metrics';
 
 export class ExecutionContextMock implements ExecutionContext {
+	props: unknown;
 	waitUntils: Promise<any>[] = [];
 	passThrough = false;
 
